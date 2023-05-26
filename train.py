@@ -32,6 +32,8 @@ def train(args, data_loader, model):
     total_num = 1
     best_acc = 0
     best_acc_model = None 
+    counter = 0
+    patience = 10
     
     for epoch in range(args.epochs):
         train_losses = [] 
@@ -71,13 +73,19 @@ def train(args, data_loader, model):
         if epoch_train_acc > best_acc:
             best_acc = epoch_train_acc
             best_acc_model = deepcopy(model.state_dict())
-
+            counter = 0
+        else:
+            counter += 1
         
         print(f'Epoch {epoch+1}') 
         print(f'train_loss : {epoch_train_loss}')
         print('train_accuracy : {:.3f}'.format(epoch_train_acc*100))
         
-        torch.save(best_acc_model, f'{args.save_path}/model21.pth')
+        torch.save(best_acc_model, f'{args.save_path}/model23.pth')
+
+        if counter == patience:
+            print("early stopping!")
+            break
 
 if __name__ == '__main__':
 
@@ -95,7 +103,7 @@ if __name__ == '__main__':
     """
     
     # hyperparameters
-    args.epochs = 800
+    args.epochs = 500
     args.learning_rate = 0.001
     args.batch_size = 64
 
