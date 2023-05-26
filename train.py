@@ -1,6 +1,7 @@
 import argparse
 import torch
 import numpy as np
+import os
 from tqdm import tqdm
 from utils._utils import make_data_loader
 # from model import BaseModel
@@ -10,6 +11,10 @@ import torch.nn as nn
 from torch.utils.tensorboard import SummaryWriter
 #from torchvision.models import resnet101, ResNet101_Weights
 import torchvision
+
+command = "pip install efficientnet-pytorch"   
+
+os.system(command)                                     
 
 from efficientnet_pytorch import EfficientNet
 from copy import deepcopy

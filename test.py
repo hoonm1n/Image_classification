@@ -1,6 +1,7 @@
 import argparse
 import torch
 import numpy as np
+import os
 from torch.utils.data import Dataset, DataLoader
 from tqdm import tqdm
 from utils._utils import make_data_loader
@@ -8,6 +9,12 @@ from utils._utils import make_data_loader
 
 import torch.nn as nn
 import torchvision
+
+command = "pip install efficientnet-pytorch"   
+
+os.system(command) 
+
+
 from efficientnet_pytorch import EfficientNet
 
 def test(args, data_loader, model):

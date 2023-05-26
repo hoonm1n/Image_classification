@@ -12,6 +12,11 @@ from PIL import Image
 import torch.nn as nn
 import torchvision
 
+
+command = "pip install efficientnet-pytorch"   
+
+os.system(command)                                     
+
 from efficientnet_pytorch import EfficientNet
 
 
