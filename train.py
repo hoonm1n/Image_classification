@@ -86,7 +86,7 @@ def train(args, data_loader, model):
         print(f'train_loss : {epoch_train_loss}')
         print('train_accuracy : {:.3f}'.format(epoch_train_acc*100))
         
-        torch.save(best_acc_model, f'{args.save_path}/model23.pth')
+        torch.save(best_acc_model, f'{args.save_path}/model24.pth')
 
         if counter == patience:
             print("early stopping!")

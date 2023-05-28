@@ -3,7 +3,7 @@ import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
 
-cinic_directory = '/content/drive/MyDrive/Term_DL/'
+cinic_directory = '/content/drive/MyDrive/Term_DL/data/CINIC-10'
 
 
 
@@ -29,8 +29,8 @@ def make_data_loader(args):
     cifar_dataset = datasets.CIFAR10(args.data, train=True, transform=custom_transform, download=True)
     cifar_test_dataset = datasets.CIFAR10(args.data, train=False, transform=transform_test, download=True)
 
-    cinic_dataset = datasets.ImageFolder(root=cinic_directory, transform=custom_transform)
-    cinic_test_dataset = datasets.ImageFolder(root=cinic_directory, train=False, transform=transform_test)
+    cinic_dataset = datasets.ImageFolder(root=cinic_directory + '/train', transform=custom_transform)
+    cinic_test_dataset = datasets.ImageFolder(root=cinic_directory + '/test', transform=transform_test)
 
 
     # Concat Dataset
