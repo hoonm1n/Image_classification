@@ -44,7 +44,7 @@ def test(args, data_loader, model):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='2023 DL Term Project')
-    parser.add_argument('--model-path', default='checkpoints/model20.pth', help="Model's state_dict")
+    parser.add_argument('--model-path', default='checkpoints/model_final.pth', help="Model's state_dict")
     parser.add_argument('--data', default='data/', type=str, help='data folder')
     args = parser.parse_args()
 
@@ -52,28 +52,11 @@ if __name__ == '__main__':
     args.device = device
     
     # hyperparameters
-    args.batch_size = 128
+    args.batch_size = 64
     
     # Make Data loader and Model
     _, test_loader = make_data_loader(args)
 
-    # instantiate model
-    # model = BaseModel()
-    # model.load_state_dict(torch.load(args.model_path))
-    # model = model.to(device)
-
-    # model = torchvision.models.resnet18(pretrained=True)
-    # num_ftrs = model.fc.in_features
-    # model.fc = nn.Linear(num_ftrs, 10)  # CIFAR-10 클래스 수에 맞게 마지막 레이어를 변경합니다.
-    # model.load_state_dict(torch.load(args.model_path))
-    # model = model.to(device)
-
-    # model = torch.hub.load('pytorch/vision:v0.9.0', 'mobilenet_v2', pretrained=True)
-    # num_classes = 10
-    # model.classifier[1] = nn.Linear(model.last_channel, num_classes)  # 분류기 변경
-    # model.load_state_dict(torch.load(args.model_path))
-    # model = model.to(device)
-    
 
     model = EfficientNet.from_pretrained('efficientnet-b3', num_classes=10)
     model.load_state_dict(torch.load(args.model_path))
